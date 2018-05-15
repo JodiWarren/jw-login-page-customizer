@@ -5,11 +5,13 @@ Requires at least: 4.9
 Tested up to:      4.9
 Stable tag:        0.1.0
 
-A brief description of the plugin.
+Style the login page from the WordPress customizer.
 
 == Description ==
 
+Easily style the login page from the WordPress customizer. Uses live previews to give the fastest and easiest experience.
 
+You can also enter your own custom CSS, which will be injected live into the preview pane.
 
 == Installation ==
 

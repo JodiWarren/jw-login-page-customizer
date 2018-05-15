@@ -13,7 +13,6 @@
 		panel.expanded.bind( function( isExpanded ) {
 			let url;
 			if ( isExpanded ) {
-				console.log( 'api.settings', { api } );
 				// We don't want to use api.settings.url.home because that gives
 				// us the interim login screen, which is not accurate
 				url = api.settings.url.home + '/wp-login.php';

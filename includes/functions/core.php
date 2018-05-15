@@ -13,10 +13,7 @@ function setup() {
 
 	add_action( 'init', $n( 'i18n' ) );
 	add_action( 'init', $n( 'init' ) );
-	add_action( 'wp_enqueue_scripts', $n( 'scripts' ) );
-	add_action( 'wp_enqueue_scripts', $n( 'styles' ) );
 	add_action( 'admin_enqueue_scripts', $n( 'admin_scripts' ) );
-	add_action( 'admin_enqueue_scripts', $n( 'admin_styles' ) );
 	add_action( 'customize_preview_init', $n('customizer_scripts') );
 
 	// Editor styles. add_editor_style() doesn't work outside of a theme.
@@ -109,30 +106,6 @@ function style_url( $stylesheet, $context ) {
 
 }
 
-/**
- * Enqueue scripts for front-end.
- *
- * @return void
- */
-function scripts() {
-
-	wp_enqueue_script(
-		'jw_login_page_customizer_shared',
-		script_url( 'shared', 'shared' ),
-		[],
-		JW_LOGIN_PAGE_CUSTOMIZER_VERSION,
-		true
-	);
-
-	wp_enqueue_script(
-		'jw_login_page_customizer_frontend',
-		script_url( 'frontend', 'frontend' ),
-		[],
-		JW_LOGIN_PAGE_CUSTOMIZER_VERSION,
-		true
-	);
-
-}
 
 /**
  * Enqueue scripts for admin.
@@ -172,81 +145,4 @@ function customizer_scripts() {
 		JW_LOGIN_PAGE_CUSTOMIZER_VERSION,
 		true
 	);
-}
-
-/**
- * Enqueue styles for front-end.
- *
- * @return void
- */
-function styles() {
-
-	wp_enqueue_style(
-		'jw_login_page_customizer_shared',
-		style_url( 'shared-style', 'shared' ),
-		[],
-		JW_LOGIN_PAGE_CUSTOMIZER_VERSION
-	);
-
-	if( is_admin() ) {
-		wp_enqueue_script(
-			'jw_login_page_customizer_admin',
-			style_url( 'admin-style', 'admin' ),
-			[],
-			JW_LOGIN_PAGE_CUSTOMIZER_VERSION,
-			true
-		);
-	}
-	else {
-		wp_enqueue_script(
-			'jw_login_page_customizer_frontend',
-			style_url( 'style', 'frontend' ),
-			[],
-			JW_LOGIN_PAGE_CUSTOMIZER_VERSION,
-			true
-		);
-	}
-
-}
-
-/**
- * Enqueue styles for admin.
- *
- * @return void
- */
-function admin_styles() {
-
-	wp_enqueue_style(
-		'jw_login_page_customizer_shared',
-		style_url( 'shared-style', 'shared' ),
-		[],
-		JW_LOGIN_PAGE_CUSTOMIZER_VERSION
-	);
-
-	wp_enqueue_script(
-		'jw_login_page_customizer_admin',
-		style_url( 'admin-style', 'admin' ),
-		[],
-		JW_LOGIN_PAGE_CUSTOMIZER_VERSION,
-		true
-	);
-
-}
-
-/**
- * Enqueue editor styles
- *
- * @return string
- */
-function mce_css( $stylesheets ) {
-
-	function style_url() {
-
-		return JW_LOGIN_PAGE_CUSTOMIZER_URL . ( ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ?
-			"assets/css/frontend/editor-style.css" :
-			"dist/css/editor-style.min.css" );
-
-	}
-
-	return $stylesheets . ',' . style_url();
 }

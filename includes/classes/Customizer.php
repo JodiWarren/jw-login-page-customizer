@@ -29,7 +29,6 @@ class Customizer {
 		$this->link_controls( $wp_customize );
 		$this->message_controls( $wp_customize );
 		$this->custom_controls( $wp_customize );
-
 	}
 
 	/**
