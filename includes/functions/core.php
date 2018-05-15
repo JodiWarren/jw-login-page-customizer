@@ -167,7 +167,7 @@ function admin_scripts() {
 function customizer_scripts() {
 	wp_enqueue_script(
 		'jw_login_page_preview',
-		JW_LOGIN_PAGE_CUSTOMIZER_URL . "assets/js/admin/customizer.js",
+		JW_LOGIN_PAGE_CUSTOMIZER_URL . "dist/js/customizer.min.js",
 		['customize-preview', 'jquery'],
 		JW_LOGIN_PAGE_CUSTOMIZER_VERSION,
 		true

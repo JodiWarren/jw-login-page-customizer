@@ -76,6 +76,7 @@ class Customizer {
 				'default'    => '',
 				'type'       => 'option',
 				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage'
 			]
 		);
 
@@ -97,6 +98,7 @@ class Customizer {
 				'default'    => 'on',
 				'type'       => 'option',
 				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage'
 			]
 		);
 
@@ -116,6 +118,7 @@ class Customizer {
 				'default'    => '',
 				'type'       => 'option',
 				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage'
 			]
 		);
 
@@ -156,6 +159,7 @@ class Customizer {
 				'default'    => '',
 				'type'       => 'option',
 				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage'
 			]
 		);
 
@@ -172,11 +176,52 @@ class Customizer {
 		);
 
 		$wp_customize->add_setting(
+			'jw_login_page[logo-image-width]',
+			[
+				'default'    => '84',
+				'type'       => 'option',
+				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage'
+			]
+		);
+
+		$wp_customize->add_control(
+			'jw_login_page[logo-image-width]',
+			[
+				'type'     => 'number',
+				'label'    => __( 'Width', JW_LOGIN_PAGE_CUSTOMIZER_DOMAIN ),
+				'section'  => 'jw_login_page_logo',
+				'settings' => 'jw_login_page[logo-image-width]',
+			]
+		);
+
+		$wp_customize->add_setting(
+			'jw_login_page[logo-image-height]',
+			[
+				'default'    => '84',
+				'type'       => 'option',
+				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage'
+			]
+		);
+
+		$wp_customize->add_control(
+			'jw_login_page[logo-image-height]',
+			[
+				'type'     => 'number',
+				'label'    => __( 'Height', JW_LOGIN_PAGE_CUSTOMIZER_DOMAIN ),
+				'section'  => 'jw_login_page_logo',
+				'settings' => 'jw_login_page[logo-image-height]',
+			]
+		);
+
+		$wp_customize->add_setting(
 			'jw_login_page[logo-destination]',
 			[
 				'default'    => '',
 				'type'       => 'option',
 				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage'
 			]
 		);
 
@@ -196,6 +241,7 @@ class Customizer {
 				'default'    => '',
 				'type'       => 'option',
 				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage'
 			]
 		);
 
@@ -215,6 +261,7 @@ class Customizer {
 				'default'    => '',
 				'type'       => 'option',
 				'capability' => 'edit_theme_options',
+				'transport'  => 'postMessage'
 			]
 		);
 

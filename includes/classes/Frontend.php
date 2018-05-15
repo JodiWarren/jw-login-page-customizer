@@ -16,8 +16,8 @@ class Frontend {
 		add_action( 'login_head', [ $this, 'customCss' ] );
 //		add_action( 'login_footer', [ $this, 'add_wp_footer' ] );
 //		add_action( 'login_head', [ $this, 'customIcon' ] );
-//		add_filter( 'login_headerurl', [ $this, 'headerUrl' ] );
-//		add_filter( 'login_headertitle', [ $this, 'headerTitle' ] );
+		add_filter( 'login_headerurl', [ $this, 'headerUrl' ] );
+		add_filter( 'login_headertitle', [ $this, 'headerTitle' ] );
 	}
 
 	/**
@@ -44,6 +44,9 @@ class Frontend {
 		// === Logo Settings ===
 		$logo = new Style( '.login h1 a' );
 		$this->addStyle( $logo, 'logo-image', "background-image: none, url('{{setting}}')" );
+		$this->addStyle( $logo, 'logo-image', "background-size: contain" );
+		$this->addStyle( $logo, 'logo-image-width', "width: {{setting}}px" );
+		$this->addStyle( $logo, 'logo-image-height', "height: {{setting}}px" );
 		if ( isset( $settings['logo-hide'] ) && $settings['logo-hide'] === true ) {
 			$logo->addStyle( "display: none" );
 		}
@@ -69,7 +72,7 @@ class Frontend {
 		$this->addStyle( $button, 'button-background-color', "box-shadow: 0 1px 0 {{setting}}" );
 		$this->addStyle( $button, 'button-text-color', "color: {{setting}}; text-shadow: none;" );
 
-		// === Form Button Settings ===
+		// === Form Button Hover Settings ===
 		$buttonHover = new Style( '.login .button-primary:hover, .login .button-primary:active' );
 		$this->addStyle( $buttonHover, 'button-hover-background-color', "background-color: {{setting}}" );
 		$this->addStyle( $buttonHover, 'button-hover-background-color', "border-color: {{setting}}" );
@@ -126,7 +129,7 @@ class Frontend {
 	 * @param $template
 	 */
 	private function addStyle( Style $class, $setting, $template ) {
-		if ( isset( $this->settings[ $setting ] ) ) {
+		if ( isset( $this->settings[ $setting ] ) && strlen($this->settings[ $setting ]) ) {
 			$value = str_replace( "{{setting}}", $this->settings[ $setting ], $template );
 			$class->addStyle( $value );
 		}
@@ -160,8 +163,9 @@ class Frontend {
 	}
 
 	public function headerUrl( $url ) {
-		if ( get_option( JW_LOGIN_CUSTOMIZER_DOMAIN . '-icon-home' ) === 'on' ) {
-			return home_url();
+		$destination = $this->settings['logo-destination'];
+		if ( isset($destination) && strlen($destination) ) {
+			return $destination;
 		}
 
 		return $url;
@@ -173,8 +177,9 @@ class Frontend {
 	 * @return string
 	 */
 	public function headerTitle( $url ) {
-		if ( get_option( JW_LOGIN_CUSTOMIZER_DOMAIN . '-icon-home' ) === 'on' ) {
-			return get_option( 'blogname', '' );
+		$title = $this->settings['logo-title'];
+		if ( isset($title) && strlen($title) ) {
+			return $title;
 		}
 
 		return $url;

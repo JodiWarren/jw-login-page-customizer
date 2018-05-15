@@ -7,7 +7,6 @@ const config = {
 	cache: true,
 	entry: {
 		admin: './assets/js/admin/admin.js',
-
 		customizer: './assets/js/admin/customizer.js',
 		frontend: './assets/js/frontend/frontend.js',
 		shared: './assets/js/shared/shared.js'
@@ -22,14 +21,14 @@ const config = {
 	devtool: 'source-map',
 	module: {
 		rules: [
-			{
-				test: /\.js$/,
-				enforce: 'pre',
-				loader: 'eslint-loader',
-				query: {
-					configFile: './.eslintrc'
-				}
-			},
+			// {
+			// 	test: /\.js$/,
+			// 	enforce: 'pre',
+			// 	loader: 'eslint-loader',
+			// 	query: {
+			// 		configFile: './.eslintrc'
+			// 	}
+			// },
 			{
 				test: /\.js$/,
 				use: [{
