@@ -13,7 +13,8 @@
     "start": "npm install && composer install && gulp",
     "watch": "gulp watch",
     "build": "gulp",
-    "deploy": "npm install && composer install && gulp"
+    "deploy": "npm install && composer install && gulp",
+    "bundle": "gulp && zip jw-login-page-customizer -r dist includes plugin.php readme.txt"
   },
   "repository": {
     "type": "git",
