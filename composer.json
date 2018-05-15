@@ -1,0 +1,21 @@
+{
+  "name": "10up/jw-login-page-customizer",
+  "description": "Jw Login Page Customizer",
+  "authors": [
+    {
+      "name": "Author",
+      "email": "info@10up.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "JwLoginPageCustomizer\\": "includes/classes/"
+    }
+  },
+  "require-dev": {
+    "10up/wp_mock": "dev-dev"
+  }
+}
